@@ -51,3 +51,32 @@ def user_signup():
 
     response.update({"status": status, "data": user_data})
     return jsonify(response), status
+
+@user.route("/auth/login", methods=["GET"])
+def user_login():
+    """Login user endpoint"""
+    error = ""
+    status = 200
+    token = None
+    response = {}
+
+    auth = request.authorization
+
+    if not auth or not auth.username or not auth.password:
+        error = 'Please provide your login info'
+        status = 401
+
+    token = db.login_user(auth.username, auth.password)
+
+    if not token:
+        error = 'Incorrect login details!'
+        status = 401
+    else:
+        status = 200
+
+    if error:
+        response.update({"status": status, "error": error})
+        return jsonify(response), status
+
+    response.update({"status": status, "data": token})
+    return jsonify(response), status
