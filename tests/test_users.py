@@ -26,7 +26,7 @@ class TestMeetups(BaseTest):
     def test_user_login(self):
         """Method to test user login endpoint"""
         url = "/api/v2/auth/login"
-        userAndPass = b64encode(b"test@test.com:Password1@").decode("ascii")
+        userAndPass = b64encode(b"test@test.com:Password1@").decode("utf-8")
         headers = { 'Authorization' : 'Basic %s' %  userAndPass }
         
         response = self.client.get(url, headers=headers)
