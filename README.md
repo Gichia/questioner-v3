@@ -4,6 +4,7 @@ This is an application that crowd-sources question suggestions for meet-ups.
 # Badges
 [![Build Status](https://travis-ci.org/Gichia/questioner-v3.svg?branch=develop)](https://travis-ci.org/Gichia/questioner-v3)
 [![Coverage Status](https://coveralls.io/repos/github/Gichia/questioner-v3/badge.svg?branch=develop)](https://coveralls.io/github/Gichia/questioner-v3?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bd0868c3c89ec2e42cf2/maintainability)](https://codeclimate.com/github/Gichia/questioner-v3/maintainability)
 
 # Summary
 Questioner is an online platform that allows users to crowd-source interesting question suggestions for meetups posted on the site. The Admin creates and posts meetups, and then registered users can post questions they think can be interesting or beneficial to be discussed on a particular meetup.
