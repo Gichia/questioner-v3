@@ -1,9 +1,11 @@
 """Base Class for our tests"""
+import jwt
 import json
 import psycopg2
 import unittest
 import datetime
 from app import create_app
+from config import Config
 from psycopg2.extras import RealDictCursor
 from app.database import init_connection
 
@@ -28,7 +30,11 @@ class BaseTest(unittest.TestCase):
 
     def post(self, url, data):
         """Method for post tests"""
-        return self.client.post(url, data=json.dumps(data), content_type="application/json")
+        und_token = jwt.encode({'sub': "test@test.com", "exp": datetime.datetime.utcnow()\
+            + datetime.timedelta(minutes=30)}, Config.SECRET_KEY)
+        token = und_token.decode("UTF-8")
+        headers = {"x-access-token": token}
+        return self.client.post(url, data=json.dumps(data), content_type="application/json", headers=headers)
 
     def get_items(self, url):
         """Method for get tests"""

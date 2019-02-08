@@ -3,10 +3,10 @@ import jwt
 import datetime
 from config import Config
 from functools import wraps
-from app.api.models.basemodel import BaseModel
-from app.api.utils.validations import Validations
 from flask import request, jsonify, make_response
 from werkzeug.exceptions import BadRequest, NotFound
+from app.api.models.basemodel import BaseModel
+from app.api.utils.validations import Validations
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class UsersModel(BaseModel, Validations):

@@ -4,9 +4,9 @@ from app.api.models.users_model import UsersModel
 
 db = UsersModel()
 
-user = Blueprint('user', __name__, url_prefix="/api/v2")
+user = Blueprint('user', __name__, url_prefix="/api/v2/auth")
 
-@user.route("/auth/signup", methods=["POST"])
+@user.route("/signup", methods=["POST"])
 def user_signup():
     """Register new user endpoint"""
     error = ""
@@ -52,7 +52,7 @@ def user_signup():
     response.update({"status": status, "data": user_data})
     return jsonify(response), status
 
-@user.route("/auth/login", methods=["GET"])
+@user.route("/login", methods=["GET"])
 def user_login():
     """Login user endpoint"""
     error = ""
